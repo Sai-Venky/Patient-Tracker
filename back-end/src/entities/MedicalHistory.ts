@@ -4,8 +4,11 @@ import {
     Column,
     CreateDateColumn,
     UpdateDateColumn,
+    ManyToOne,
+    JoinColumn
   } from 'typeorm';
-  
+import { Patient } from './Patient';
+
 @Entity('Medical_History_Table')
 export class MedicalHistory {
   @PrimaryGeneratedColumn('uuid')

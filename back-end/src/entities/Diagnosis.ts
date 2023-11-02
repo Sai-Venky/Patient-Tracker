@@ -4,6 +4,8 @@ import {
     Column,
     CreateDateColumn,
     UpdateDateColumn,
+    ManyToOne,
+    JoinColumn
   } from 'typeorm';
 
 @Entity('Diagnoses_Table')
