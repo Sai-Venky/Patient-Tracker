@@ -1,0 +1,84 @@
+.create-account-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+.create-account-title {
+    text-align: center;
+    margin-bottom: 2px;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.user-type-text {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1em;
+    color: #333;
+}
+
+.create-account-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-account-field {
+    margin-bottom: 20px;
+}
+
+.create-account-label {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.create-account-input {
+    padding: 8px;
+    font-size: 0.9em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.create-account-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.create-account-button:hover {
+    background-color: #45a049;
+}
+
+.user-type-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.user-type-button {
+    padding: 10px 30px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.user-type-button.doctor-selected {
+    background-color: #92a1cf;
+    color: white;
+}
+
+.user-type-button.patient-selected {
+    background-color: #4CAF50;
+    color: white;
+}

@@ -1,0 +1,65 @@
+.doctor-login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+.doctor-login-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.doctor-login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.doctor-login-field {
+    margin-bottom: 20px;
+}
+
+.doctor-login-label {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.doctor-login-input {
+    padding: 8px;
+    font-size: 0.9em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.doctor-login-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #92a1cf;
+    color: white;
+    cursor: pointer;
+}
+
+.doctor-login-button:hover {
+    background-color: #B0E0E6;
+}
+
+.doctor-forgot-password-link {
+    display: block;
+    margin-top: 20px;
+    font-size: 0.8em;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+}
+
+.doctor-forgot-password-link:hover {
+    text-decoration: underline;
+}

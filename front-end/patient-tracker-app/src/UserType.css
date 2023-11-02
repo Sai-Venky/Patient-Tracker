@@ -1,0 +1,34 @@
+.button {
+  font-size: 20px;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.button-doctor {
+  background-color: #92a1cf ;
+  color: white;
+}
+
+.button-patient {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.button-doctor:hover, .button-patient:hover {
+  opacity: 0.8;
+}
+
+.new-user-link {
+    display: block;
+    margin-top: 20px;
+    font-size: 0.8em;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+}
+
+.new-user-link:hover {
+    text-decoration: underline;
+}
