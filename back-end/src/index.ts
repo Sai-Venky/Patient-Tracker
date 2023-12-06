@@ -1,15 +1,24 @@
 import express from 'express';
+import { initializeDBConnection } from './db/database';
 import patientRoutes from './routes/patientRoutes';
 
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => {
-  res.send('Hello, Express.js with TypeScript!');
-});
+app.use(express.json());
 
-app.use('/api', patientRoutes);
+// Initialize database connection
+initializeDBConnection().then(() => {
+  console.log('Connected to the database.');
 
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+  // Setup routes
+  app.use('/api', patientRoutes);
+
+  // Start server
+  app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}`);
+  });
+}).catch(error => {
+  console.error('Database connection failed', error);
+  process.exit();
 });
