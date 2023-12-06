@@ -1,8 +1,18 @@
 import { Request, Response } from 'express';
 import { PatientModel } from '../models/patientModel';
 
+/**
+ * PatientController is called by the patient routes and interacts with the Patient and related models.
+*/
 export class PatientController {
-
+  
+  /**
+   * Handles the creation of a new patient.
+   * 
+   * @param req - The Express request object containing patient data in the body.
+   * @param res - The Express response object.
+   * @returns A JSON response with the created patient or an error message.
+   */
   static async createPatient(req: Request, res: Response): Promise<Response> {
     try {
       const newPatient = await PatientModel.create(req.body);
@@ -12,6 +22,13 @@ export class PatientController {
     }
   }
 
+  /**
+   * Retrieves all patients from the database.
+   * 
+   * @param req - The Express request object.
+   * @param res - The Express response object.
+   * @returns A JSON response with an array of all patients or an error message.
+   */
   static async getAllPatients(req: Request, res: Response): Promise<Response> {
     try {
       const patients = await PatientModel.findAll();
@@ -21,6 +38,13 @@ export class PatientController {
     }
   }
 
+  /**
+   * Updates the data of an existing patient.
+   * 
+   * @param req - The Express request object with patient ID in the URL parameters and update data in the body.
+   * @param res - The Express response object.
+   * @returns A JSON response with the updated patient or an error message.
+   */
   static async updatePatient(req: Request, res: Response): Promise<Response> {
     const patientId = req.params.id;
     try {
@@ -31,6 +55,13 @@ export class PatientController {
     }
   }
 
+  /**
+   * Retrieves a single patient by their ID.
+   * 
+   * @param req - The Express request object with patient ID in the URL parameters.
+   * @param res - The Express response object.
+   * @returns A JSON response with the patient data or a not found/error message.
+   */
   static async getPatient(req: Request, res: Response): Promise<Response> {
     const patientId = req.params.id;
     try {

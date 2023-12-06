@@ -3,14 +3,36 @@ import { PatientController } from '../controllers/patientController';
 
 const router = express.Router();
 
-// Existing routes for creating and getting all patients
+/**
+ * POST /patients
+ * Route to create a new patient.
+ * It expects patient data in the request body.
+ * The actual logic is handled by the PatientController.createPatient method.
+ */
 router.post('/patients', PatientController.createPatient);
+
+/**
+ * GET /patients
+ * Route to get all patients.
+ * It retrieves a list of all patients from the database.
+ * The actual logic is handled by the PatientController.getAllPatients method.
+ */
 router.get('/patients', PatientController.getAllPatients);
 
-// New route for updating a patient
+/**
+ * PUT /patients/:id
+ * Route to update an existing patient.
+ * It expects the updated patient data in the request body and patient ID in the URL parameter.
+ * The actual logic is handled by the PatientController.updatePatient method.
+ */
 router.put('/patients/:id', PatientController.updatePatient);
 
-// New route for fetching a single patient
+/**
+ * GET /patients/:id
+ * Route to fetch a single patient by their ID.
+ * The patient ID is expected in the URL parameter.
+ * The actual logic is handled by the PatientController.getPatient method.
+ */
 router.get('/patients/:id', PatientController.getPatient);
 
 export default router;
