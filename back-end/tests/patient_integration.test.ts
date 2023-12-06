@@ -42,7 +42,28 @@ describe('PatientController Integration Tests', () => {
         Email: "test@example.com",
         Phone_Number: "1234567890",
         Address: "123 Test St",
-        Emergency_Contact: "Jane Doe"
+        Emergency_Contact: "Jane Doe",
+        "Medications": [
+          {
+            "Medication_Name": "Medication A",
+            "Dosage": "10mg",
+            "Frequency": "Once a day"
+          }
+        ],
+        "Diagnoses": [
+          {
+            "Diagnosis": "Diagnosis A",
+            "Date": "2023-01-01",
+            "Doctor_Name": "Dr. Smith"
+          }
+        ],
+        "MedicalHistory": [
+          {
+            "Condition_Name": "Condition A",
+            "Condition_Description": "Description A",
+            "Condition_Start_Date": "2020-01-01"
+          }
+        ]
       };
 
       const response = await request(app)
@@ -50,7 +71,12 @@ describe('PatientController Integration Tests', () => {
         .send(patientData);
 
       expect(response.status).toBe(201);
-      expect(response.body).toMatchObject(patientData);
+      expect(response.body.Name).toEqual(patientData.Name);
+      expect(response.body.Age).toEqual(patientData.Age);
+      expect(response.body.Address).toEqual(patientData.Address);
+      expect(response.body.Email).toEqual(patientData.Email);
+      expect(response.body.Phone_Number).toEqual(patientData.Phone_Number);
+      expect(response.body.Emergency_Contact).toEqual(patientData.Emergency_Contact);
 
       const patientRepository = getRepository(Patient);
       const patient = await patientRepository.findOne({ where: { Email: "test@example.com" } });
@@ -67,12 +93,54 @@ describe('PatientController Integration Tests', () => {
         Email: "update@example.com",
         Phone_Number: 987654321,
         Address: "456 Update St",
-        Emergency_Contact: "John Doe"
+        Emergency_Contact: "John Doe",
+        "Medications": [
+          {
+            "Medication_Name": "Medication A",
+            "Dosage": "10mg",
+            "Frequency": "Once a day"
+          }
+        ],
+        "Diagnoses": [
+          {
+            "Diagnosis": "Diagnosis A",
+            "Date": "2023-01-01",
+            "Doctor_Name": "Dr. Smith"
+          }
+        ],
+        "MedicalHistory": [
+          {
+            "Condition_Name": "Condition A",
+            "Condition_Description": "Description A",
+            "Condition_Start_Date": "2020-01-01"
+          }
+        ]
       });
 
       const updatedData = {
         Name: "Updated Patient",
         Age: 36,
+        "Medications": [
+          {
+            "Medication_Name": "Medication B",
+            "Dosage": "10mg",
+            "Frequency": "Once a day"
+          }
+        ],
+        "Diagnoses": [
+          {
+            "Diagnosis": "Diagnosis B",
+            "Date": "2023-01-01",
+            "Doctor_Name": "Dr. Smith"
+          }
+        ],
+        "MedicalHistory": [
+          {
+            "Condition_Name": "Condition B",
+            "Condition_Description": "Description A",
+            "Condition_Start_Date": "2020-01-01"
+          }
+        ]
       };
 
       const response = await request(app)
