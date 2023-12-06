@@ -7,6 +7,7 @@ import {
     ManyToOne,
     JoinColumn
   } from 'typeorm';
+  import { Patient } from './Patient';
 
 @Entity('Diagnoses_Table')
 export class Diagnosis {
