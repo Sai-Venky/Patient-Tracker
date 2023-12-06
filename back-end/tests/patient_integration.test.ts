@@ -18,7 +18,7 @@ describe('PatientController Integration Tests', () => {
         password: '',
         database: 'saivenkatesh',
         entities: [Patient, Medication, MedicalHistory, Diagnosis],
-        synchronize: true, // use this only in development
+        synchronize: true,
         logging: false,
       }); // Uses default connection settings, ideally pointing to a test database
   });
@@ -58,4 +58,71 @@ describe('PatientController Integration Tests', () => {
     });
   });
 
+  describe('updatePatient', () => {
+    it('should update a patient in the database', async () => {
+      // First, create a patient to update
+      let patient = await getRepository(Patient).save({
+        Name: "Update Patient",
+        Age: 35,
+        Email: "update@example.com",
+        Phone_Number: 987654321,
+        Address: "456 Update St",
+        Emergency_Contact: "John Doe"
+      });
+
+      const updatedData = {
+        Name: "Updated Patient",
+        Age: 36,
+      };
+
+      const response = await request(app)
+        .put(`/api/patients/${patient.Patient_ID}`)
+        .send(updatedData);
+
+      expect(response.status).toBe(200);
+
+      // Fetch the updated patient
+      const updatedPatient = await getRepository(Patient).findOne({ where: { Patient_ID: patient.Patient_ID } });
+      expect(updatedPatient).toBeDefined();
+      expect(updatedPatient?.Name).toBe(updatedData.Name);
+      expect(updatedPatient?.Age).toBe(updatedData.Age);
+    });
+  });
+
+  describe('getAllPatients', () => {
+    it('should retrieve all patients from the database', async () => {
+      // Insert some test patients
+      await getRepository(Patient).save([
+        { Name: "Patient One", Age: 40, Email: "one@example.com", Phone_Number: 123, Address: "Address One", Emergency_Contact: "Contact One" },
+        { Name: "Patient Two", Age: 50, Email: "two@example.com", Phone_Number: 456, Address: "Address Two", Emergency_Contact: "Contact Two" }
+      ]);
+
+      const response = await request(app)
+        .get('/api/patients');
+
+      expect(response.status).toBe(200);
+      expect(response.body.length).toBeGreaterThanOrEqual(2);
+    });
+  });
+
+  describe('getPatient', () => {
+    it('should retrieve a single patient from the database', async () => {
+      // First, create a patient to retrieve
+      let patient = await getRepository(Patient).save({
+        Name: "Single Patient",
+        Age: 45,
+        Email: "single@example.com",
+        Phone_Number: 789,
+        Address: "Single Address",
+        Emergency_Contact: "Single Contact"
+      });
+
+      const response = await request(app)
+        .get(`/api/patients/${patient.Patient_ID}`);
+
+      expect(response.status).toBe(200);
+      expect(response.body).toBeDefined();
+      expect(response.body.Patient_ID).toBe(patient.Patient_ID);
+    });
+  });
 });
