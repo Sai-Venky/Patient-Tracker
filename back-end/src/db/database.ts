@@ -1,8 +1,8 @@
 import { createConnection } from 'typeorm';
-import { Patient } from '../entities/Patient';
-import { Medication } from '../entities/Medication';
-import { MedicalHistory } from '../entities/MedicalHistory';
-import { Diagnosis } from '../entities/Diagnosis';
+import { Patient } from '../entities/patient_entity';
+import { Medication } from '../entities/medication_entity';
+import { MedicalHistory } from '../entities/medicalhistory_entity';
+import { Diagnosis } from '../entities/diagnosis_entity';
 
 export const initializeDBConnection = async () => {
   return createConnection({

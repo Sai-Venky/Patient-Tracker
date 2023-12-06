@@ -6,16 +6,15 @@ import {
     UpdateDateColumn,
     OneToMany
   } from 'typeorm';
-  import { Medication } from './Medication';
-import { MedicalHistory } from './MedicalHistory';
-import { Diagnosis } from './Diagnosis';
+  import { Medication } from './medication_entity';
+  import { MedicalHistory } from './medicalhistory_entity';
+  import { Diagnosis } from './diagnosis_entity';
 
   @Entity('Patients_Table')
   export class Patient {
     @PrimaryGeneratedColumn('uuid')
     Patient_ID: string;
 
-  
     @Column()
     Name: string;
   
@@ -35,12 +34,12 @@ import { Diagnosis } from './Diagnosis';
     Emergency_Contact: string;
   
     @CreateDateColumn()
-    created_at: Date;
+    Created_At: Date;
   
     @UpdateDateColumn()
-    updated_at: Date;
+    Updated_At: Date;
 
-    @OneToMany(() => Medication, (medication) => medication.patient)
+  @OneToMany(() => Medication, (medication) => medication.patient)
   medications: Medication[];
 
   @OneToMany(() => MedicalHistory, (medicalHistory) => medicalHistory.patient)

@@ -7,7 +7,7 @@ import {
     ManyToOne,
     JoinColumn
   } from 'typeorm';
-import { Patient } from './Patient';
+import { Patient } from './patient_entity';
 
 @Entity('Medical_History_Table')
 export class MedicalHistory {
@@ -31,8 +31,8 @@ export class MedicalHistory {
   Condition_Start_Date: Date;
 
   @CreateDateColumn()
-  created_at: Date;
+  Created_At: Date;
 
   @UpdateDateColumn()
-  updated_at: Date;
+  Updated_At: Date;
 }

@@ -7,32 +7,32 @@ import {
     ManyToOne,
     JoinColumn
   } from 'typeorm';
-  import { Patient } from './Patient';
+import { Patient } from './patient_entity';
 
-@Entity('Diagnoses_Table')
-export class Diagnosis {
+@Entity('Medications_Table')
+export class Medication {
   @PrimaryGeneratedColumn('uuid')
-  Diagnosis_ID: string;
+  Medication_ID: string;
 
   @Column('uuid')
   Patient_ID: string;
 
-  @ManyToOne(() => Patient, (patient) => patient.diagnoses)
+  @ManyToOne(() => Patient, (patient) => patient.medications)
   @JoinColumn({ name: 'Patient_ID' })
   patient: Patient;
 
   @Column()
-  Diagnosis: string;
-
-  @Column('date')
-  Date: Date;
+  Medication_Name: string;
 
   @Column()
-  Doctor_Name: string;
+  Dosage: string;
+
+  @Column()
+  Frequency: string;
 
   @CreateDateColumn()
-  created_at: Date;
+  Created_At: Date;
 
   @UpdateDateColumn()
-  updated_at: Date;
+  Updated_At: Date;
 }

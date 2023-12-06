@@ -1,8 +1,8 @@
 import { getRepository } from 'typeorm';
-import { Patient } from '../entities/Patient';
-import { Medication } from '../entities/Medication';
-import { Diagnosis } from '../entities/Diagnosis';
-import { MedicalHistory } from '../entities/MedicalHistory';
+import { Patient } from '../entities/patient_entity';
+import { Medication } from '../entities/medication_entity';
+import { Diagnosis } from '../entities/diagnosis_entity';
+import { MedicalHistory } from '../entities/medicalhistory_entity';
 export class PatientModel {
 
   static async create(patientData: any) {

@@ -2,10 +2,10 @@
 
 import request from 'supertest';
 import { createConnection, getConnection, getRepository } from 'typeorm';
-import { Patient } from '../src/entities/Patient';
-import { Diagnosis } from '../src/entities/Diagnosis';
-import { MedicalHistory } from '../src/entities/MedicalHistory';
-import { Medication } from '../src/entities/Medication';
+import { Patient } from '../src/entities/patient_entity';
+import { Diagnosis } from '../src/entities/diagnosis_entity';
+import { MedicalHistory } from '../src/entities/medicalhistory_entity';
+import { Medication } from '../src/entities/medication_entity';
 import { app } from '../src/index'; // Import your Express app
 
 describe('PatientController Integration Tests', () => {

@@ -1,21 +1,21 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
-@Entity('Passwords_Table')
+@Entity('passwords')
 export class Password {
   @PrimaryGeneratedColumn()
-  Password_ID: number;
+  password_id: number;
 
   @Column()
-  User_name: string;
+  user_name: string;
 
   @Column()
-  Password_Hash: string;
+  password_hash: string;
 
   @Column()
-  Type: string;
+  type: string;
 
   @Column()
-  Is_Active: boolean;
+  is_active: boolean;
 
   @CreateDateColumn()
   created_at: Date;
