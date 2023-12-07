@@ -1,9 +1,14 @@
 import express from 'express';
 import { initializeDBConnection } from './db/database';
 import patientRoutes from './routes/patientRoutes';
+const cors = require('cors')
 
 const app = express();
-const port = 3000;
+const port = 5000;
+
+app.use(cors({
+  origin:'*'
+}))
 
 app.use(express.json());
 
