@@ -1,5 +1,6 @@
 import express from 'express';
 import { PatientController } from '../controllers/patientController';
+import { PasswordController } from '../controllers/PasswordController';
 
 const router = express.Router();
 
@@ -34,5 +35,9 @@ router.put('/patients/:id', PatientController.updatePatient);
  * The actual logic is handled by the PatientController.getPatient method.
  */
 router.get('/patients/:id', PatientController.getPatient);
+
+router.post('/register',PasswordController.createLogin);
+
+router.get('/login',PasswordController.login)
 
 export default router;
