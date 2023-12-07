@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './CreateAccount.css';
+import axios from 'axios' 
+import config from '../../../config.json'
 
 function CreateAccount() {
     const [username, setUsername] = useState('');
@@ -13,7 +15,32 @@ function CreateAccount() {
             alert('Passwords do not match!');
             return;
         }
-        alert('Account created successfully!');
+        if(!userType){
+            alert("Select user type");
+            return;
+        }
+        axios({
+                method:"post",
+                url:config.backend_url + "/register",
+                data:{
+                    user_name:username,
+                    password_hash:password,
+                    type:userType,
+                    is_active:true
+                }
+            })
+            .then(res=> {
+                alert(res.data.message)
+                setUsername("")
+                setPassword("")
+                setConfirmPassword("")
+                setUserType("")
+
+            })
+            .catch(err=> {
+                console.log(err)
+                alert(err.response.data.message)
+            })
     };
 
     return (
