@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './CreateAccount.css';
 import axios from 'axios' 
 import config from '../../../config.json'
+import { useNavigate } from 'react-router-dom';
 import CryptoJS from 'crypto-js';
 
 
@@ -10,6 +11,7 @@ function CreateAccount() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [userType, setUserType] = useState('');
+    let navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -38,7 +40,7 @@ function CreateAccount() {
                 setPassword("")
                 setConfirmPassword("")
                 setUserType("")
-
+                navigate('/')
             })
             .catch(err=> {
                 console.log(err)
