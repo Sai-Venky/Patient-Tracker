@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './CreateAccount.css';
 import axios from 'axios' 
 import config from '../../../config.json'
+import CryptoJS from 'crypto-js';
+
 
 function CreateAccount() {
     const [username, setUsername] = useState('');
@@ -19,12 +21,13 @@ function CreateAccount() {
             alert("Select user type");
             return;
         }
+        const hashed_password = CryptoJS.MD5(password).toString();
         axios({
                 method:"post",
                 url:config.backend_url + "/register",
                 data:{
                     user_name:username,
-                    password_hash:password,
+                    password_hash:hashed_password,
                     type:userType,
                     is_active:true
                 }
