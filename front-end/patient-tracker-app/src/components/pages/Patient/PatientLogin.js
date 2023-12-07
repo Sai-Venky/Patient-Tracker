@@ -1,9 +1,13 @@
 import React from 'react';
 import './PatientLogin.css';
+import { useNavigate } from 'react-router-dom';
 
 function PatientLogin() {
-    const handleLogin = () => {
-        // Implement the login functionality here
+    let navigate = useNavigate();
+    // Implement the login functionality here
+    const handleLogin = (e) => {
+            e.preventDefault(); // Prevent the default form submission
+            navigate('/dashboard'); // Use navigate to go to the dashboard
     };
 
     return (
