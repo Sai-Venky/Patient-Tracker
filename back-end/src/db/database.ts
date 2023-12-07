@@ -3,6 +3,7 @@ import { Patient } from '../entities/patient_entity';
 import { Medication } from '../entities/medication_entity';
 import { MedicalHistory } from '../entities/medicalhistory_entity';
 import { Diagnosis } from '../entities/diagnosis_entity';
+import { Password } from '../entities/password_entity';
 
 /**
  * Initializes and returns a connection to the database using TypeORM.
@@ -13,10 +14,10 @@ export const initializeDBConnection = async () => {
     type: 'postgres',
     host: 'localhost',
     port: 5432,
-    username: 'saivenkatesh',
-    password: '',
-    database: 'saivenkatesh',
-    entities: [Patient, Medication, MedicalHistory, Diagnosis],
+    username: 'postgres',
+    password: 'password',
+    database: 'patients',
+    entities: [Patient, Medication, MedicalHistory, Diagnosis, Password],
     synchronize: true,
     logging: false,
   });
