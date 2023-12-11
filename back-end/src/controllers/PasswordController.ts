@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { PasswordModel } from '../models/passwordModel';
-const crypto = require('crypto')
 
 
 export class PasswordController {
@@ -22,7 +21,7 @@ export class PasswordController {
 
   static async login(req: Request, res: Response): Promise<Response> {
     const user_name = req.body.user_name;
-    const password_input = req.body.password;
+    const password_input = req.body.password_hash;
     try {
       const user_details = await PasswordModel.fetchOne(user_name);
       let hashPwd = password_input;

@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import './CreateAccount.css';
 import axios from 'axios' 
 import config from '../../../config.json'
+import { useNavigate } from 'react-router-dom';
+import CryptoJS from 'crypto-js';
+
 
 function CreateAccount() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [userType, setUserType] = useState('');
+    let navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -19,12 +23,13 @@ function CreateAccount() {
             alert("Select user type");
             return;
         }
+        const hashed_password = CryptoJS.MD5(password).toString();
         axios({
                 method:"post",
                 url:config.backend_url + "/register",
                 data:{
                     user_name:username,
-                    password_hash:password,
+                    password_hash:hashed_password,
                     type:userType,
                     is_active:true
                 }
@@ -35,7 +40,7 @@ function CreateAccount() {
                 setPassword("")
                 setConfirmPassword("")
                 setUserType("")
-
+                navigate('/')
             })
             .catch(err=> {
                 console.log(err)

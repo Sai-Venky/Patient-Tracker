@@ -38,6 +38,6 @@ router.get('/patients/:id', PatientController.getPatient);
 
 router.post('/register',PasswordController.createLogin);
 
-router.get('/login',PasswordController.login)
+router.post('/login',PasswordController.login)
 
 export default router;
