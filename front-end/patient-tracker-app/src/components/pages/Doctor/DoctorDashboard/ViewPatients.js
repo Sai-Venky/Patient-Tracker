@@ -1,72 +1,93 @@
 import React, { useState } from 'react';
 import './ViewPatients.css';
+import medicalRecordsIcon from './DoctorDashboardImages/Medical_records.png';
 
 function ViewPatients() {
-    // Dummy patient data with the specified attributes
+    const [searchTerm, setSearchTerm] = useState('');
+    const [selectedPatients, setSelectedPatients] = useState(new Set());
+
+    // Dummy patient data
     const patients = [
-        { patientID: 'P001', name: 'John Doe', age: 30, conditionName: 'Flu', conditionDescription: 'Showing symptoms of flu.', startDate: '2023-01-01' },
-        // ... more patient data
+        { id: 'P001', name: 'John Doe', age: 30, condition: 'Hypertension' },
+        { id: 'P002', name: 'Jane Smith', age: 45, condition: 'Diabetes' },
+        { id: 'P003', name: 'Mark Taylor', age: 25, condition: 'Flu' }
     ];
 
-    const [searchTerm, setSearchTerm] = useState('');
-
-    const handleSearch = (event) => {
-        setSearchTerm(event.target.value);
+    const handleAccessRecords = () => {
+        // Logic to access selected patient's medical records
+        console.log('Access Patient\'s Medical Records');
     };
 
-    const filteredPatients = patients.filter(
-        patient =>
-            patient.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            patient.conditionName.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const handleCheckboxChange = (patientId) => {
+        setSelectedPatients((prevSelectedPatients) => {
+            const newSelectedPatients = new Set(prevSelectedPatients);
+            if (newSelectedPatients.has(patientId)) {
+                newSelectedPatients.delete(patientId);
+            } else {
+                newSelectedPatients.add(patientId);
+            }
+            return newSelectedPatients;
+        });
+    };
 
-    const handleViewMore = (patient) => {
-        // Here you would open a modal or display details
-        alert(`Details for ${patient.name}: 
-        ID: ${patient.patientID}, 
-        Age: ${patient.age}, 
-        Condition: ${patient.conditionName}, 
-        Description: ${patient.conditionDescription}, 
-        Start Date: ${patient.startDate}`);
+    const handleSearchChange = (event) => {
+        setSearchTerm(event.target.value.toLowerCase());
+    };
+
+    const isRowHighlighted = (patient) => {
+        return searchTerm && (patient.name.toLowerCase().includes(searchTerm) ||
+            patient.id.toLowerCase().includes(searchTerm) ||
+            patient.condition.toLowerCase().includes(searchTerm));
     };
 
     return (
-        <div className="view-patients-layout">
-            <div className="search-filter-container">
+        <div className="view-patients-container">
+            <div className="search-container">
                 <input
                     type="text"
-                    placeholder="Search by Name or Condition..."
-                    className="search-input"
-                    onChange={handleSearch}
+                    placeholder="Search patients..."
+                    className="search-box"
+                    onChange={handleSearchChange}
                 />
             </div>
-            <div className="view-patients-container">
-                <h1>Patient List</h1>
-                <div className="patients-table-container">
-                    <table className="patients-table">
-                        <thead>
-                        <tr>
-                            <th>Patient ID</th>
-                            <th>Name</th>
-                            <th>Age</th>
-                            <th>Condition Name</th>
-                            <th>View More</th>
+            <h1 className="patients-table-header">Patient List</h1>
+            <div className="patients-table-container">
+                <table className="patients-table">
+                    <thead>
+                    <tr>
+                        <th>Patient ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Condition Name</th>
+                        <th>Select Patient</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {patients.map((patient) => (
+                        <tr key={patient.id} className={isRowHighlighted(patient) ? 'highlighted' : ''}>
+                            <td>{patient.id}</td>
+                            <td>{patient.name}</td>
+                            <td>{patient.age}</td>
+                            <td>{patient.condition}</td>
+                            <td>
+                                <input
+                                    type="checkbox"
+                                    id={`select-${patient.id}`}
+                                    name="select_patient"
+                                    value={patient.id}
+                                    onChange={() => handleCheckboxChange(patient.id)}
+                                    checked={selectedPatients.has(patient.id)}
+                                />
+                            </td>
                         </tr>
-                        </thead>
-                        <tbody>
-                        {filteredPatients.map(patient => (
-                            <tr key={patient.patientID}>
-                                <td>{patient.patientID}</td>
-                                <td>{patient.name}</td>
-                                <td>{patient.age}</td>
-                                <td>{patient.conditionName}</td>
-                                <td>
-                                    <button className="view-more-button" onClick={() => handleViewMore(patient)}>View More</button>
-                                </td>
-                            </tr>
-                        ))}
-                        </tbody>
-                    </table>
+                    ))}
+                    </tbody>
+                </table>
+            </div>
+            <div className="tile-container">
+                <div className="tile" onClick={handleAccessRecords}>
+                    <img src={medicalRecordsIcon} alt="Access Medical Records" className="tile-icon"/>
+                    <span className="tile-label">Access Patient's Medical Records</span>
                 </div>
             </div>
         </div>
@@ -74,6 +95,4 @@ function ViewPatients() {
 }
 
 export default ViewPatients;
-
-
 
