@@ -1,0 +1,70 @@
+.view-patients-layout {
+    display: flex;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.search-filter-container {
+    flex: 1;
+    padding: 20px;
+    max-width: 300px; /* You can adjust this width as needed */
+}
+
+.search-input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.view-patients-container {
+    flex: 3;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    color: #000;
+}
+
+.patients-table-container {
+    width: 100%;
+}
+
+.patients-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-left: 20px; /* Adjust or remove margin as necessary */
+}
+
+.patients-table thead {
+    background-color: #f9f9f9;
+}
+
+.patients-table th, .patients-table td {
+    text-align: left;
+    padding: 15px 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.patients-table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+.view-more-button {
+    padding: 5px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-align: center;
+    display: block;
+    margin: auto;
+}
+
+.view-more-button:hover {
+    background-color: #0056b3;
+}

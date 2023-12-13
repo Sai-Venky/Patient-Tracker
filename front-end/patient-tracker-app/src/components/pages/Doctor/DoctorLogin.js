@@ -8,7 +8,7 @@ import CryptoJS from 'crypto-js';
 function DoctorLogin() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    //let navigate = useNavigate();
+    let navigate = useNavigate();
     // Implement the login functionality here
     const handleLogin = (e) => {
         console.log(username)
@@ -25,7 +25,7 @@ function DoctorLogin() {
         .then(res=> {
             //Login successful
             alert("Login success")
-            // navigate(''); // Use navigate to go to the dashboard
+            navigate('/doctor-dashboard'); // Use navigate to go to the dashboard
         })
         .catch(err=> {
             console.log(err)

@@ -8,6 +8,8 @@ import PatientDashboard from './pages/Patient/PatientDashboard/PatientDashboard'
 import SubmitMedicalRecords from './pages/Patient/PatientDashboard/SubmitMedicalRecords';
 import UpdateExistingRecords from './pages/Patient/PatientDashboard/UpdateExistingRecords';
 import CreateAccount from './pages/CreateAccount/CreateAccount';
+import DoctorDashboard from './pages/Doctor/DoctorDashboard/DoctorDashboard';
+import ViewPatients from "./pages/Doctor/DoctorDashboard/ViewPatients";
 import './App.css'
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
             <Route path="/update-info" element={<UpdatePatientInfo />} />
             <Route path="/update-existing-records" element={<UpdateExistingRecords />} />
             <Route path="/create-account" element={<CreateAccount />} />
+            <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
+            <Route path="/view-patients" element={<ViewPatients />} />
           </Routes>
         </header>
       </div>
