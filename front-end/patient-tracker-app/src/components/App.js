@@ -10,7 +10,7 @@ import UpdateExistingRecords from './pages/Patient/PatientDashboard/UpdateExisti
 import CreateAccount from './pages/CreateAccount/CreateAccount';
 import DoctorDashboard from './pages/Doctor/DoctorDashboard/DoctorDashboard';
 import ViewPatients from "./pages/Doctor/DoctorDashboard/ViewPatients";
-import AccessPreviousReports from "./pages/Doctor/DoctorDashboard/AccessPreviousReports";
+import PrescribeMedication from "./pages/Doctor/DoctorDashboard/PrescribeMedication";
 import './App.css'
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
             <Route path="/create-account" element={<CreateAccount />} />
             <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
             <Route path="/view-patients" element={<ViewPatients />} />
-            <Route path="/access-reports" element={<AccessPreviousReports />} />
+            <Route path="/prescribe-medication" element={<PrescribeMedication />} />
           </Routes>
         </header>
       </div>
