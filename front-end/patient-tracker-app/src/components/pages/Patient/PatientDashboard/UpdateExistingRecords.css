@@ -1,41 +1,47 @@
 .records-container {
   max-width: 90%;
-  margin: 20px auto;
-  padding: 10px;
-  font-family: Arial, sans-serif;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  background: #fff;
+  border-radius: 10px;
+  color: black;
 }
 
 h2 {
   text-align: center;
-  color: #000;
+  color: #333;
+  margin-bottom: 30px;
 }
 
 .records-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #fff;
   margin-top: 20px;
-  border: 1px solid #ccc;
 }
 
 .records-table th,
 .records-table td {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 10px;
   text-align: left;
-  color: #000;
 }
 
 .records-table th {
-  background-color: #f2f2f2;
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+.records-table tbody tr {
+  transition: background-color 0.3s ease;
 }
 
 .records-table tbody:empty::before {
   content: 'No records to display';
   display: block;
   text-align: center;
-  padding: 10px 0;
-  color: #000;
+  padding: 20px 0;
 }
 
 .records-table tr:nth-child(even) {
@@ -47,15 +53,16 @@ h2 {
 }
 
 .edit-button {
-  background-color: #4CAF50;
+  background-color: #008CBA;
   color: white;
   border: none;
-  padding: 5px 10px;
-  border-radius: 3px;
+  padding: 8px 15px;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .edit-button:hover {
-  background-color: #45a049;
+  background-color: #005f73;
 }
 

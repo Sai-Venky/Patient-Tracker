@@ -1,0 +1,91 @@
+.dashboard-main {
+    display: flex;
+    justify-content: space-between;
+}
+
+.appointments-section {
+    width: 45%;
+    margin-right: 10px;
+}
+
+.appointments-header {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 150px;
+}
+
+.tiles-section {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tile {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .dashboard-main {
+        flex-direction: column;
+    }
+    .appointments-section,
+    .tiles-section {
+        width: 100%;
+    }
+}
+
+.appointments-table {
+    width: 100%; /* Ensure the table takes full width */
+    table-layout: fixed;
+    margin-bottom: 20px;
+    margin-left: 100px;
+    border-collapse: collapse;
+    color: black;
+    font-size: 0.9em;
+}
+
+.appointments-table th, .appointments-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    white-space: nowrap; /* Prevents text from wrapping */
+}
+
+.appointments-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.appointments-table th:nth-child(1),
+.appointments-table td:nth-child(1) {
+    width: 23%; /* Patient ID */
+}
+
+.appointments-table th:nth-child(2),
+.appointments-table td:nth-child(2) {
+    width: 40%; /* Name */
+}
+
+.appointments-table th:nth-child(3),
+.appointments-table td:nth-child(3) {
+    width: 40%; /* Appointment Time */
+}
+
+.schedule-appointment-btn {
+    padding: 10px;
+    font-size: 0.75em;
+    background-color: #5c92d1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto 0 280px;
+}
+
+.schedule-appointment-btn:hover {
+    background-color: #3e70a3;
+}
+
+
