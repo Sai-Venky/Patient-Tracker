@@ -25,6 +25,7 @@ function PatientLogin() {
             })
             .then(res=> {
                 //Login successful
+                sessionStorage.setItem('patientId',username)
                 navigate('/dashboard'); // Use navigate to go to the dashboard
             })
             .catch(err=> {
