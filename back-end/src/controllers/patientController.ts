@@ -3,9 +3,14 @@ import { PatientModel } from '../models/patientModel';
 
 /**
  * PatientController is called by the patient routes and interacts with the Patient and related models.
-*/
+ */
 export class PatientController {
-  
+  private patientModel: PatientModel;
+
+  constructor(patientModel: PatientModel) {
+    this.patientModel = patientModel;
+  }
+
   /**
    * Handles the creation of a new patient.
    * 
@@ -13,9 +18,9 @@ export class PatientController {
    * @param res - The Express response object.
    * @returns A JSON response with the created patient or an error message.
    */
-  static async createPatient(req: Request, res: Response): Promise<Response> {
+  async createPatient(req: Request, res: Response): Promise<Response> {
     try {
-      const newPatient = await PatientModel.create(req.body);
+      const newPatient = await this.patientModel.create(req.body);
       return res.status(201).json(newPatient);
     } catch (error) {
       return res.status(500).json({ message: error });
@@ -29,9 +34,9 @@ export class PatientController {
    * @param res - The Express response object.
    * @returns A JSON response with an array of all patients or an error message.
    */
-  static async getAllPatients(req: Request, res: Response): Promise<Response> {
+  async getAllPatients(req: Request, res: Response): Promise<Response> {
     try {
-      const patients = await PatientModel.findAll();
+      const patients = await this.patientModel.findAll();
       return res.status(200).json(patients);
     } catch (error) {
       return res.status(500).json({ message: error });
@@ -45,10 +50,10 @@ export class PatientController {
    * @param res - The Express response object.
    * @returns A JSON response with the updated patient or an error message.
    */
-  static async updatePatient(req: Request, res: Response): Promise<Response> {
+  async updatePatient(req: Request, res: Response): Promise<Response> {
     const patientId = req.params.id;
     try {
-      const updatedPatient = await PatientModel.update(patientId, req.body);
+      const updatedPatient = await this.patientModel.update(patientId, req.body);
       return res.status(200).json(updatedPatient);
     } catch (error) {
       return res.status(500).json({ message: error });
@@ -62,10 +67,10 @@ export class PatientController {
    * @param res - The Express response object.
    * @returns A JSON response with the patient data or a not found/error message.
    */
-  static async getPatient(req: Request, res: Response): Promise<Response> {
+  async getPatient(req: Request, res: Response): Promise<Response> {
     const patientId = req.params.id;
     try {
-      const patient = await PatientModel.fetchOne(patientId);
+      const patient = await this.patientModel.fetchOne(patientId);
       if (!patient) {
         return res.status(404).json({ message: 'Patient not found' });
       }
@@ -74,5 +79,4 @@ export class PatientController {
       return res.status(500).json({ message: error });
     }
   }
-
 }

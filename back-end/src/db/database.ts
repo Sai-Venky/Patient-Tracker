@@ -15,7 +15,7 @@ export const initializeDBConnection = async () => {
     host: 'localhost',
     port: 5432,
     username: 'postgres',
-    password: 'password',
+    password: 'postgres',
     database: 'patients',
     entities: [Patient, Medication, MedicalHistory, Diagnosis, Password],
     synchronize: true,
