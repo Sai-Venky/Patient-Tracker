@@ -4,7 +4,8 @@ import {
     Column,
     CreateDateColumn,
     UpdateDateColumn,
-    OneToMany
+    OneToMany,
+    PrimaryColumn
   } from 'typeorm';
   import { Medication } from './medication_entity';
   import { MedicalHistory } from './medicalhistory_entity';
@@ -15,25 +16,28 @@ import {
 */
 @Entity('Patients_Table')
 export class Patient {
-  @PrimaryGeneratedColumn('uuid')
-  Patient_ID: string; // Unique identifier for the patient
+  // @PrimaryGeneratedColumn('uuid')
+  // Patient_ID: string; // Unique identifier for the patient
 
-  @Column()
+  @PrimaryColumn()
+  Patient_ID: string; // UserName/Patient_ID of the patient
+
+  @Column({default: "Unknown"})
   Name: string; // Name of the patient
 
-  @Column('int')
+  @Column('int',{default: 0})
   Age: number; // Age of the patient
 
-  @Column()
+  @Column({default: ""})
   Email: string; // Email address of the patient
 
-  @Column('int')
+  @Column('int',{default: 0})
   Phone_Number: number; // Phone number of the patient
 
-  @Column()
+  @Column({default: ""})
   Address: string; // Address of the patient
 
-  @Column()
+  @Column({default: ""})
   Emergency_Contact: string; // Emergency contact information
 
   @CreateDateColumn()
