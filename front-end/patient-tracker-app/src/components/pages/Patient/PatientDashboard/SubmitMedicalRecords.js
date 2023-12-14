@@ -42,17 +42,18 @@ function SubmitMedicalRecords() {
             Condition_Description: conditionDescription,
             Condition_Start_Date: conditionStartDate
         };
-
-        // API Handling
-        // Uncomment and use the actual API endpoint and method (POST for new, PUT for update)
-        axios.post(`${config.backend_url}/medicalCondition`, medicalConditionData)
-            .then(response => {
-                alert('Medical condition submitted successfully.');
+        
+        axios.get(`${config.backend_url}patients/${patientID}`).then(res =>{
+            console.log(res)
+            let patientData = res.data;
+            patientData.medicalHistory.push({
+                Condition_Name: conditionName,
+                Condition_Description: conditionDescription,
+                Condition_Start_Date: conditionStartDate
             })
-            .catch(error => {
-                console.error('An error occurred while submitting the medical condition:', error);
-                alert('Failed to submit medical condition.');
-            });
+            patientData.MedicalHistory = patientData.medicalHistory;
+            axios.put(`${config.backend_url}patients/${patientID}`,patientData);
+        })
     };
 
     return (
