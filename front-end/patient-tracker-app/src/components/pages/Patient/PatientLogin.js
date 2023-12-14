@@ -46,7 +46,6 @@ function PatientLogin() {
                 <div className="patient-login-field">
                     <label htmlFor="password" className="patient-login-label">Password:</label>
                     <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} className="patient-login-input" required />
-                    <a href="/forgot-password" className="patient-forgot-password-link">Forgot Username or Password?</a>
                 </div>
                 <button type="submit" className="patient-login-button">Login</button>
             </form>

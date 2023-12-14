@@ -45,7 +45,6 @@ function DoctorLogin() {
                 <div className="doctor-login-field">
                     <label htmlFor="password" className="doctor-login-label">Password:</label>
                     <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} className="doctor-login-input" required />
-                    <a href="/forgot-password" className="doctor-forgot-password-link">Forgot Username or Password?</a>
                 </div>
                 <button type="submit" className="doctor-login-button">Login</button>
             </form>
