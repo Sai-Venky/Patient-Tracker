@@ -40,6 +40,18 @@ function CreateAccount() {
                 setPassword("")
                 setConfirmPassword("")
                 setUserType("")
+                
+                alert(userType)
+                // Create a entry in the Patients/Doctor table
+                if(userType == "Patient"){
+                    axios({
+                        method:"post",
+                        url:config.backend_url + "/patients",
+                        data:{
+                            Patient_ID:username
+                        }
+                    })
+                }
                 navigate('/')
             })
             .catch(err=> {

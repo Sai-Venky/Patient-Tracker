@@ -34,7 +34,7 @@ function PatientDashboard() {
     useEffect(() => {
         // Fetch the patient profile from the backend
         const patientID = sessionStorage.getItem('patientId');
-        axios.get(`${config.backend_url}/patientProfile/${patientID}`)
+        axios.get(`${config.backend_url}/patients/${patientID}`)
             .then(response => {
                 setPatientProfile(response.data);
             })
