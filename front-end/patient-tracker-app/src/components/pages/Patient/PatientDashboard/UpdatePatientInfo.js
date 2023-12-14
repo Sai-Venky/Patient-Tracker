@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './UpdatePatientInfo.css';
 import axios from "axios";
+import config from '../../../../config.json';
 
 function UpdatePatientInfo() {
   const [formData, setFormData] = useState({
@@ -22,24 +23,31 @@ function UpdatePatientInfo() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    //Need PatientID here
-    //
-    //const patientID = sessionStorage.getItem('patientId');
-  //   if (!patientID) {
-  //     alert('No patient ID found. Please log in again.');
-  //     return;
-  //   }
-  //
-  //   axios.post(`${config.backend_url}/updatePatientInfo`, { ...formData, patientID })
-  //       .then(response => {
-  //         // Handle the successful update here
-  //         alert('Patient information updated successfully!');
-  //       })
-  //       .catch(error => {
-  //         console.error('An error occurred while updating patient information:', error);
-  //         alert('Failed to update patient information.');
-  //       });
+    
+    const patientID = sessionStorage.getItem('patientId');
+    if (!patientID) {
+      alert('No patient ID found. Please log in again.');
+      return;
+    }
+    let data = {
+      "Name":formData.name,
+      "Address":formData.address,
+      "Age":formData.age,
+      "Email":formData.email,
+      "Phone_Number":formData.phone,
+      "Emergency_Contact":formData.emergencyContact
+    }
+    
+    data["Patient_ID"]=patientID
+    axios.put(`${config.backend_url}patients/${patientID}`,data)
+        .then(response => {
+          // Handle the successful update here
+          alert('Patient information updated successfully!');
+        })
+        .catch(error => {
+          console.error('An error occurred while updating patient information:', error);
+          alert('Failed to update patient information.');
+        });
    };
 
   return (
