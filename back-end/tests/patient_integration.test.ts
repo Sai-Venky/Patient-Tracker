@@ -14,9 +14,9 @@ describe('PatientController Integration Tests', () => {
         type: 'postgres',
         host: 'localhost',
         port: 5432,
-        username: 'saivenkatesh',
-        password: '',
-        database: 'saivenkatesh',
+        username: 'postgres',
+        password: 'postgres',
+        database: 'patients',
         entities: [Patient, Medication, MedicalHistory, Diagnosis],
         synchronize: true,
         logging: false,
@@ -37,10 +37,11 @@ describe('PatientController Integration Tests', () => {
   describe('createPatient', () => {
     it('should create a patient in the database', async () => {
       const patientData = {
+        Patient_ID: "TestP",
         Name: "Test Patient",
         Age: 30,
         Email: "test@example.com",
-        Phone_Number: "1234567890",
+        Phone_Number: 1234567890,
         Address: "123 Test St",
         Emergency_Contact: "Jane Doe",
         "Medications": [
@@ -88,6 +89,7 @@ describe('PatientController Integration Tests', () => {
     it('should update a patient in the database', async () => {
       // First, create a patient to update
       let patient = await getRepository(Patient).save({
+        Patient_ID: "TestP",
         Name: "Update Patient",
         Age: 35,
         Email: "update@example.com",
@@ -118,6 +120,7 @@ describe('PatientController Integration Tests', () => {
       });
 
       const updatedData = {
+        Patient_ID: "TestP",
         Name: "Updated Patient",
         Age: 36,
         "Medications": [
@@ -161,8 +164,8 @@ describe('PatientController Integration Tests', () => {
     it('should retrieve all patients from the database', async () => {
       // Insert some test patients
       await getRepository(Patient).save([
-        { Name: "Patient One", Age: 40, Email: "one@example.com", Phone_Number: 123, Address: "Address One", Emergency_Contact: "Contact One" },
-        { Name: "Patient Two", Age: 50, Email: "two@example.com", Phone_Number: 456, Address: "Address Two", Emergency_Contact: "Contact Two" }
+        {  Patient_ID: "One", Name: "Patient One", Age: 40, Email: "one@example.com", Phone_Number: 123, Address: "Address One", Emergency_Contact: "Contact One" },
+        {  Patient_ID: "Two",Name: "Patient Two", Age: 50, Email: "two@example.com", Phone_Number: 456, Address: "Address Two", Emergency_Contact: "Contact Two" }
       ]);
 
       const response = await request(app)
@@ -177,6 +180,7 @@ describe('PatientController Integration Tests', () => {
     it('should retrieve a single patient from the database', async () => {
       // First, create a patient to retrieve
       let patient = await getRepository(Patient).save({
+        Patient_ID: "SPatient",
         Name: "Single Patient",
         Age: 45,
         Email: "single@example.com",
