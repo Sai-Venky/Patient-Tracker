@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './ViewPatients.css';
 import medicalRecordsIcon from './DoctorDashboardImages/Medical_records.png';
 
-
 function ViewPatients() {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedPatients, setSelectedPatients] = useState(new Set());
@@ -15,20 +14,15 @@ function ViewPatients() {
     ];
 
     const handleAccessRecords = () => {
-        // Logic to access selected patient's medical records
         console.log('Access Patient\'s Medical Records');
         const selectedPatientsCount = selectedPatients.size;
 
         if (selectedPatientsCount === 0) {
-            // No patient is selected
             alert('Please select a patient.');
         } else if (selectedPatientsCount > 1) {
-            // More than one patient is selected
             alert('Please select only one patient.');
         } else {
-            // Exactly one patient is selected, proceed with accessing records
             console.log('Access Patient\'s Medical Records for patient ID:', [...selectedPatients][0]);
-            // You can put your logic here to access the records of the selected patient
         }
     };
 

@@ -1,12 +1,46 @@
-// UpdatePatientInfo.js
-import React from 'react';
-import './UpdatePatientInfo.css'; // Importing the CSS file for styling
+import React, {useState} from 'react';
+import './UpdatePatientInfo.css';
+import axios from "axios";
 
 function UpdatePatientInfo() {
+  const [formData, setFormData] = useState({
+    name: '',
+    age: '',
+    email: '',
+    phone: '',
+    address: '',
+    emergencyContact: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-  };
+
+    //Need PatientID here
+    //
+    //const patientID = sessionStorage.getItem('patientId');
+  //   if (!patientID) {
+  //     alert('No patient ID found. Please log in again.');
+  //     return;
+  //   }
+  //
+  //   axios.post(`${config.backend_url}/updatePatientInfo`, { ...formData, patientID })
+  //       .then(response => {
+  //         // Handle the successful update here
+  //         alert('Patient information updated successfully!');
+  //       })
+  //       .catch(error => {
+  //         console.error('An error occurred while updating patient information:', error);
+  //         alert('Failed to update patient information.');
+  //       });
+   };
 
   return (
     <div className="update-container">
@@ -14,27 +48,64 @@ function UpdatePatientInfo() {
       <form onSubmit={handleSubmit} className="update-form">
         <div className="form-group">
           <label htmlFor="name">Name:</label>
-          <input type="text" id="name" name="name" required />
+          <input type="text"
+                 id="name"
+                 name="name"
+                 value={formData.name}
+                 onChange={handleChange}
+                 required
+          />
         </div>
         <div className="form-group">
           <label htmlFor="age">Age:</label>
-          <input type="number" id="age" name="age" required />
+          <input type="number"
+                 id="age"
+                 name="age"
+                 value={formData.age}
+                 onChange={handleChange}
+                 required
+          />
         </div>
         <div className="form-group">
           <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" required />
+          <input type="email"
+                 id="email"
+                 name="email"
+                 value={formData.email}
+                 onChange={handleChange}
+                 required
+          />
         </div>
         <div className="form-group">
           <label htmlFor="phone">Phone number:</label>
-          <input type="tel" id="phone" name="phone" required />
+          <input type="tel"
+                 id="phone"
+                 name="phone"
+                 value={formData.phone}
+                 onChange={handleChange}
+                 required
+          />
         </div>
         <div className="form-group">
           <label htmlFor="address">Address:</label>
-          <input type="text" id="address" name="address" required />
+          <input type="text" id="address" name="address" required/>
+          <input type="text"
+                 id="address"
+                 name="address"
+                 value={formData.address}
+                 onChange={handleChange}
+                 required
+          />
         </div>
         <div className="form-group">
           <label htmlFor="emergency-contact">Emergency Contact:</label>
-          <input type="text" id="emergency-contact" name="emergencyContact" required />
+          <input type="text"
+                 id="emergency-contact"
+                 name="emergencyContact"
+                 value={formData.emergencyContact}
+                 onChange={handleChange}
+                 required
+          />
         </div>
         <button type="submit" className="submit-button">Update Information</button>
       </form>

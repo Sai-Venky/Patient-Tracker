@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './PrescribeMedication.css'; // Your existing CSS styles can likely remain unchanged
+import './PrescribeMedication.css';
 
 function PrescribeMedication() {
     const [patientId, setPatientId] = useState('');
@@ -31,7 +31,6 @@ function PrescribeMedication() {
                     value={patientId}
                     onChange={(e) => setPatientId(e.target.value)}
                 />
-
                 <label htmlFor="medication">Medication:</label>
                 <select
                     id="medication"
@@ -45,7 +44,6 @@ function PrescribeMedication() {
                         </option>
                     ))}
                 </select>
-
                 <label htmlFor="frequency">Frequency:</label>
                 <input
                     id="frequency"
@@ -54,7 +52,6 @@ function PrescribeMedication() {
                     onChange={(e) => setFrequency(e.target.value)}
                     placeholder="e.g., Once daily"
                 />
-
                 <label htmlFor="dosage">Dosage:</label>
                 <input
                     id="dosage"
@@ -63,7 +60,6 @@ function PrescribeMedication() {
                     onChange={(e) => setDosage(e.target.value)}
                     placeholder="e.g., 500mg"
                 />
-
                 <button type="submit">Submit</button>
             </form>
         </div>
