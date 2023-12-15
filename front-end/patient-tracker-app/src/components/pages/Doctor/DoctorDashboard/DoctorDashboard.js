@@ -5,6 +5,7 @@ import medicalRecordsIcon from './DoctorDashboardImages/Medical_records.png';
 import prescribeMedicationIcon from './DoctorDashboardImages/Medical_reports.png';
 import diagnosePatientIcon from './DoctorDashboardImages/View_patients.png';
 import axios from "axios";
+import config from '../../../../config.json';
 
 function DoctorDashboard() {
     const navigate = useNavigate();
@@ -17,9 +18,14 @@ function DoctorDashboard() {
 
     useEffect(() => {
         // Replace '' with  actual API endpoint
-        axios.get('')
+        axios.get(`${config.backend_url}/patients`)
             .then(response => {
-                setPatients(response.data); // Set the patient data in state
+                console.log(response.data)
+                let patientDetails = []
+                for(let patient of response.data){
+                    patientDetails.push({id:patient.Patient_ID,name:patient.Name,age:patient.Age})
+                }
+                setPatients(patientDetails); // Set the patient data in state
             })
             .catch(error => {
                 console.error('There was an error fetching the patient data:', error);
@@ -65,7 +71,7 @@ function DoctorDashboard() {
         }
 
         const patientId = [...selectedPatients][0];
-        axios.get(`http://example.com/api/medical-records/${patientId}`)
+        axios.get(`${config.backend_url}/patients/${patientId}`)
             .then(response => {
                 setMedicalRecords(response.data); // Set the medical records data in state
                 setShowMedicalRecords(true); // Show the medical records table
