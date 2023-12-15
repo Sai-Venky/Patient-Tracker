@@ -31,6 +31,16 @@ function PatientDashboard() {
         axios.get(`${config.backend_url}/patients/${patientID}`)
             .then(response => {
                 setPatientProfile(response.data);
+                let new_conditions = []
+                let id = 1;
+                for(let cond of response.data.medicalHistory){
+                    new_conditions.push({
+                        ConditionName:cond.Condition_Name,
+                        Description:cond.Condition_Description,
+                        Date:cond.Condition_Start_Date,
+                        serialNumber:id})
+                }
+                setConditions(new_conditions)
             })
             .catch(error => {
                 console.error('Error fetching patient profile', error);
@@ -43,6 +53,16 @@ function PatientDashboard() {
 
     const handleUpdateMedicalHistory = () => {
         setEditing(!editing);
+        let updatedPatientProfile = patientProfile;
+        
+        let updatedConditions = []
+        for(let cond of conditions){
+            updatedConditions.push({"Condition_Name":cond.ConditionName,"Condition_Description":cond.Description,"Condition_Start_Date":cond.Date})
+        }
+        delete updatedPatientProfile.medicalHistory;
+        updatedPatientProfile.MedicalHistory = updatedConditions;
+        const patientID = sessionStorage.getItem('patientId');
+        axios.put(`${config.backend_url}/patients/${patientID}`,updatedPatientProfile)
     };
 
     const handleAddCondition = () => {
