@@ -7,7 +7,6 @@ import UpdatePatientInfo from './pages/Patient/PatientDashboard/UpdatePatientInf
 import PatientDashboard from './pages/Patient/PatientDashboard/PatientDashboard';
 import CreateAccount from './pages/CreateAccount/CreateAccount';
 import DoctorDashboard from './pages/Doctor/DoctorDashboard/DoctorDashboard';
-import ViewPatients from "./pages/Doctor/DoctorDashboard/ViewPatients";
 import PrescribeMedication from "./pages/Doctor/DoctorDashboard/PrescribeMedication";
 import './App.css'
 
@@ -24,7 +23,6 @@ function App() {
             <Route path="/update-info" element={<UpdatePatientInfo />} />
             <Route path="/create-account" element={<CreateAccount />} />
             <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
-            <Route path="/view-patients" element={<ViewPatients />} />
             <Route path="/prescribe-medication" element={<PrescribeMedication />} />
           </Routes>
         </header>
