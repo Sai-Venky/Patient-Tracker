@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './PrescribeMedication.css';
+import axios from 'axios' 
+
+import config from '../../../../config.json';
 
 function PrescribeMedication() {
     const navigate = useNavigate();
@@ -14,6 +17,19 @@ function PrescribeMedication() {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log({ patientId, medication, frequency, dosage });
+
+        axios.get(`${config.backend_url}/patients/${patientId}`)
+            .then(response =>{
+                let patientInfo = response.data;
+                let Medications = [...patientInfo.medications,{
+                    "Medication_Name": medication,
+                    "Dosage": dosage,
+                    "Frequency": frequency
+                }];
+                delete patientInfo.new_medications
+                patientInfo.Medications = Medications
+                axios.put(`${config.backend_url}/patients/${patientId}`,patientInfo)
+            })
 
         // TODO: Add your API call here to submit the prescription data
 
