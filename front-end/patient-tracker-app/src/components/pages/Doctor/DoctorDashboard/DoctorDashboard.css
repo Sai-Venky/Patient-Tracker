@@ -1,91 +1,164 @@
-.dashboard-main {
-    display: flex;
-    justify-content: space-between;
-}
-
-.appointments-section {
-    width: 45%;
-    margin-right: 10px;
-}
-
-.appointments-header {
-    text-align: center;
-    margin-bottom: 20px;
-    margin-left: 150px;
-}
-
-.tiles-section {
-    width: 45%;
+.dashboard-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.tile {
-    margin-bottom: 20px;
-}
-
-@media (max-width: 768px) {
-    .dashboard-main {
-        flex-direction: column;
-    }
-    .appointments-section,
-    .tiles-section {
-        width: 100%;
-    }
-}
-
-.appointments-table {
-    width: 100%; /* Ensure the table takes full width */
-    table-layout: fixed;
-    margin-bottom: 20px;
-    margin-left: 100px;
-    border-collapse: collapse;
+    padding: 20px;
     color: black;
-    font-size: 0.9em;
 }
 
-.appointments-table th, .appointments-table td {
+.dashboard-header {
+    width: 100%;
+    text-align: center;
+    padding: 2px;
+    margin-bottom: 30px;
+    color: black;
+    font-size: 1.5em;
+}
+
+.search-container {
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.search-box {
+    padding: 8px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.patients-table-container {
+    width: 100%;
+}
+
+.patients-table-header {
+    color: black;
+    text-align: left;
+    font-size: 1.5em;
+}
+
+.patients-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px; /* Space for buttons */
+}
+
+.patients-table th, .patients-table td {
     border: 1px solid #ddd;
     padding: 8px;
-    text-align: center;
-    white-space: nowrap; /* Prevents text from wrapping */
+    text-align: left;
+    color: black;
 }
 
-.appointments-table th {
+.patients-table th {
     background-color: #4CAF50;
     color: white;
 }
 
-.appointments-table th:nth-child(1),
-.appointments-table td:nth-child(1) {
-    width: 23%; /* Patient ID */
+.patients-table tr:hover {
+    background-color: lightsteelblue;
 }
 
-.appointments-table th:nth-child(2),
-.appointments-table td:nth-child(2) {
-    width: 40%; /* Name */
+.tiles-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
 }
 
-.appointments-table th:nth-child(3),
-.appointments-table td:nth-child(3) {
-    width: 40%; /* Appointment Time */
+.tile {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 0.9em;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    margin: 10px;
 }
 
-.schedule-appointment-btn {
+.tile-icon {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.tile-label {
+    color: #333333;
+}
+
+.tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 10px;
+    }
+
+    .search-container,
+    .patients-table-header,
+    .patients-table-container,
+    .tiles-container {
+        width: 100%;
+    }
+
+    .search-box {
+        margin-bottom: 20px;
+    }
+
+    .tiles-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tile {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+.medical-records-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.medical-records-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.medical-records-table th,
+.medical-records-table td {
+    border: 1px solid #ddd;
     padding: 10px;
-    font-size: 0.75em;
-    background-color: #5c92d1;
+    text-align: left;
+}
+
+.medical-records-table th {
+    background-color: #f4f4f4;
+}
+
+.close-records-btn {
+    padding: 10px 20px;
+    background-color: #f44336;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-    display: block;
-    margin: 20px auto 0 280px;
+    font-size: 0.9em;
 }
 
-.schedule-appointment-btn:hover {
-    background-color: #3e70a3;
+.close-records-btn:hover {
+    background-color: #d32f2f;
 }
-
-
