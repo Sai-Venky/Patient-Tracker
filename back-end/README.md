@@ -41,5 +41,6 @@ We welcome contributions to the Patient Tracker project.
 This project is licensed under the MIT License.
 
 # Program features:
-1. Patient Interaction API Server - Put, Post, Get ALl Patients.
+1. Patient Interaction API Server - Create New Patient, Update Patient, Get All Patients Details.
 2. Authentication For User
+3. Load test Framework Support
