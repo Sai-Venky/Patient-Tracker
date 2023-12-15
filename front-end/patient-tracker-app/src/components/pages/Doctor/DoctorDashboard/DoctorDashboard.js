@@ -86,10 +86,10 @@ function DoctorDashboard() {
         navigate('/prescribe-medication', { state: { patientId } });
     };
 
-    const handleDiagnosePatient = () => {
-        console.log('Diagnose patient');
-        // Logic to diagnose patient goes here
-    };
+    // const handleDiagnosePatient = () => {
+    //     console.log('Diagnose patient');
+    //     // Logic to diagnose patient goes here
+    // };
 
     return (
         <div className="dashboard-container">
@@ -147,10 +147,10 @@ function DoctorDashboard() {
                         <img src={prescribeMedicationIcon} alt="Prescribe Medication" className="tile-icon" />
                         <span className="tile-label">Prescribe Medication</span>
                     </div>
-                    <div className="tile" onClick={handleDiagnosePatient}>
-                        <img src={diagnosePatientIcon} alt="Diagnose Patient" className="tile-icon" />
-                        <span className="tile-label">Diagnose Patient</span>
-                    </div>
+                    {/*<div className="tile" onClick={handleDiagnosePatient}>*/}
+                    {/*    <img src={diagnosePatientIcon} alt="Diagnose Patient" className="tile-icon" />*/}
+                    {/*    <span className="tile-label">Diagnose Patient</span>*/}
+                    {/*</div>*/}
                 </div>
             </div>
             {showMedicalRecords && (
