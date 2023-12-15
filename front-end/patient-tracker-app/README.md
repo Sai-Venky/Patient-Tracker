@@ -23,12 +23,25 @@ In the project directory, you can run:
 - `npm run build`: Builds the app for production to the `build` folder.
 - `npm run eject`: Removes the single build dependency from the project. **Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-## Features
-- Patient Interaction Interface
-- User Authentication System
+## Run
 
-## Contributing
-Contributions to the Patient Tracker front-end are welcome.
+Install the dependencies as mentioned in the backend README
+
+For running the frontend:
+ 1. Install the dependencies from package.json using `npm i`.
+ 2. cd  `Patient-Tracker\front-end\patient-tracker-app`
+ 3. npm start
+
+ ## Program features:
+
+
+1. The patient tracker system allows  the Patients and Doctors to register with unique userid.
+2. The patient can login and update thier personal information
+3. Patient can add Modify and delete the medical records through our app.
+4. Doctor can login and view the patients that are registered.
+5. Doctor can view the patient records if necessary.
+6. Additionally doctor can add the medications that are required for the patient.
+
 
 ## License
 This project is licensed under the MIT License.

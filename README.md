@@ -23,5 +23,5 @@ For running the frontend:
 2. The patient can login and update thier personal information
 3. Patient can add Modify and delete the medical records through our app.
 4. Doctor can login and view the patients that are registered.
-5. Doctor can view and update the patient records if necessary.
+5. Doctor can view the patient records if necessary.
 6. Additionally doctor can add the medications that are required for the patient.
