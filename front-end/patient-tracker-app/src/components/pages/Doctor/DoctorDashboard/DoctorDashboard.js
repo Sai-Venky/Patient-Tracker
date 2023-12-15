@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import './DoctorDashboard.css';
 import medicalRecordsIcon from './DoctorDashboardImages/Medical_records.png';
 import prescribeMedicationIcon from './DoctorDashboardImages/Medical_reports.png';
-import diagnosePatientIcon from './DoctorDashboardImages/View_patients.png';
 import axios from "axios";
 import config from '../../../../config.json';
 
@@ -92,10 +91,10 @@ function DoctorDashboard() {
         navigate('/prescribe-medication', { state: { patientId } });
     };
 
-    const handleDiagnosePatient = () => {
-        console.log('Diagnose patient');
-        // Logic to diagnose patient goes here
-    };
+    // const handleDiagnosePatient = () => {
+    //     console.log('Diagnose patient');
+    //     // Logic to diagnose patient goes here
+    // };
 
     return (
         <div className="dashboard-container">
@@ -153,17 +152,34 @@ function DoctorDashboard() {
                         <img src={prescribeMedicationIcon} alt="Prescribe Medication" className="tile-icon" />
                         <span className="tile-label">Prescribe Medication</span>
                     </div>
-                    <div className="tile" onClick={handleDiagnosePatient}>
-                        <img src={diagnosePatientIcon} alt="Diagnose Patient" className="tile-icon" />
-                        <span className="tile-label">Diagnose Patient</span>
-                    </div>
+                    {/*<div className="tile" onClick={handleDiagnosePatient}>*/}
+                    {/*    <img src={diagnosePatientIcon} alt="Diagnose Patient" className="tile-icon" />*/}
+                    {/*    <span className="tile-label">Diagnose Patient</span>*/}
+                    {/*</div>*/}
                 </div>
             </div>
             {showMedicalRecords && (
                 <div className="medical-records-container">
                     <h2>Medical Records for Patient ID: {Array.from(selectedPatients)[0]}</h2>
                     <table className="medical-records-table">
-                        {/* Table headers and body for medical records */}
+                        <thead>
+                        <tr>
+                            <th>Serial Number</th>
+                            <th>Condition Name</th>
+                            <th>Condition Description</th>
+                            <th>Condition Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {medicalRecords.map((record, index) => (
+                            <tr key={index}>
+                                <td>{index + 1}</td>
+                                <td>{record.name}</td>
+                                <td>{record.description}</td>
+                                <td>{record.date}</td>
+                            </tr>
+                        ))}
+                        </tbody>
                     </table>
                     <button onClick={() => setShowMedicalRecords(false)} className="close-records-btn">Close</button>
                 </div>
