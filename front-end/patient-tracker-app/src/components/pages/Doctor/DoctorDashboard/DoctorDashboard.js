@@ -72,7 +72,15 @@ function DoctorDashboard() {
         const patientId = [...selectedPatients][0];
         axios.get(`${config.backend_url}/patients/${patientId}`)
             .then(response => {
-                setMedicalRecords(response.data); // Set the medical records data in state
+                let conditions = []
+                for(let cond of response.data.medicalHistory){
+                    conditions.push({
+                        name:cond.Condition_Name,
+                        description:cond.Condition_Description,
+                        date:cond.Condition_Start_Date,
+                    })
+                }
+                setMedicalRecords(conditions); // Set the medical records data in state
                 setShowMedicalRecords(true); // Show the medical records table
             })
             .catch(error => {
