@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import './DoctorDashboard.css';
 import medicalRecordsIcon from './DoctorDashboardImages/Medical_records.png';
 import prescribeMedicationIcon from './DoctorDashboardImages/Medical_reports.png';
-import diagnosePatientIcon from './DoctorDashboardImages/View_patients.png';
 import axios from "axios";
 import config from '../../../../config.json';
 
@@ -163,7 +162,24 @@ function DoctorDashboard() {
                 <div className="medical-records-container">
                     <h2>Medical Records for Patient ID: {Array.from(selectedPatients)[0]}</h2>
                     <table className="medical-records-table">
-                        {/* Table headers and body for medical records */}
+                        <thead>
+                        <tr>
+                            <th>Serial Number</th>
+                            <th>Condition Name</th>
+                            <th>Condition Description</th>
+                            <th>Condition Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {medicalRecords.map((record, index) => (
+                            <tr key={index}>
+                                <td>{index + 1}</td>
+                                <td>{record.name}</td>
+                                <td>{record.description}</td>
+                                <td>{record.date}</td>
+                            </tr>
+                        ))}
+                        </tbody>
                     </table>
                     <button onClick={() => setShowMedicalRecords(false)} className="close-records-btn">Close</button>
                 </div>
