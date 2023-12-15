@@ -22,7 +22,7 @@ PostgreSQL
 `git clone https://github.com/Sai-Venky/Patient-Tracker.git`
 
 4. Install Dependencies: Navigate to the project directory and install the necessary dependencies listed in package.json:
-`cd patient-tracker`
+`cd patient-tracker/back-end`
 `npm install`
 
 5. Start the Server: Go to the src folder and start the server:
