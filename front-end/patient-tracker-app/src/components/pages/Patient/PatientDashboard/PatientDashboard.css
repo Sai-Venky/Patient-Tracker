@@ -15,6 +15,22 @@
     font-size: 0.75em;
 }
 
+.update-history-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.update-history-button:hover {
+    background-color: #45a049;
+}
+
 .profile-and-utilities {
     display: flex;
     justify-content: center;
@@ -26,7 +42,13 @@
     background: white;
     border-radius: 10px;
     margin-right: 350px;
+    margin-left: 50px;
     flex-basis: 250px;
+    text-align: left;
+}
+
+.patient-profile-header {
+    text-align: center;
 }
 
 .utilities-container {
@@ -69,4 +91,66 @@
 .tile-label {
     font-size: 1em;
     color: #333333;
+}
+
+.records-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 900px;
+}
+
+.records-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+}
+
+.records-table th,
+.records-table td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.records-table th {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.records-table th {
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+}
+
+.records-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.records-table tr:hover {
+    background-color: #eaeaea;
+}
+
+.records-table .add-button,
+.records-table .delete-button {
+    margin: 0;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.records-table .add-button {
+    padding: 6px 12px;
+}
+
+.records-table .delete-button {
+    padding: 6px 12px;
+}
+
+.records-table .add-button:hover,
+.records-table .delete-button:hover {
+    filter: brightness(90%);
 }
